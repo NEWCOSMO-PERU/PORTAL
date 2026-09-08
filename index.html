@@ -720,98 +720,7 @@ footer::before {
         display: none;
     }
 }
-
-/* ===== NEWCOSMO PREMIUM · 6 + 9 + 10 ===== */
-body{
-  position:relative;overflow-x:hidden;
-  background:
-    radial-gradient(900px 520px at 50% -12%,rgba(49,108,255,.18),transparent 62%),
-    radial-gradient(650px 500px at 8% 42%,rgba(28,82,190,.10),transparent 68%),
-    radial-gradient(700px 560px at 94% 68%,rgba(82,55,190,.08),transparent 70%),#050814;
-}
-body::before{
-  content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.16;
-  background-image:linear-gradient(rgba(120,160,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.08) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(circle at center,black 15%,transparent 82%);
-  -webkit-mask-image:radial-gradient(circle at center,black 15%,transparent 82%);
-}
-body::after{
-  content:"";position:fixed;width:42rem;height:42rem;left:50%;top:-20rem;transform:translateX(-50%);
-  z-index:-2;pointer-events:none;border-radius:50%;
-  background:radial-gradient(circle,rgba(70,130,255,.16),rgba(42,95,220,.06) 34%,transparent 70%);
-  filter:blur(18px);animation:ncAurora 11s ease-in-out infinite alternate;
-}
-@keyframes ncAurora{from{transform:translateX(-50%) scale(.92);opacity:.65}to{transform:translateX(-50%) scale(1.08);opacity:1}}
-.nc-cursor-spotlight{
-  position:fixed;z-index:9999;width:420px;height:420px;border-radius:50%;pointer-events:none;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(82,143,255,.10),rgba(82,143,255,.035) 32%,transparent 70%);
-  mix-blend-mode:screen;opacity:0;transition:opacity .25s ease;
-}
-body.nc-pointer-active .nc-cursor-spotlight{opacity:1}
-
-.premium-stats{width:min(1100px,calc(100% - 32px));margin:64px auto 18px}
-.stats-shell{
-  padding:30px;border:1px solid rgba(130,160,220,.13);border-radius:28px;
-  background:linear-gradient(180deg,rgba(13,20,39,.72),rgba(7,12,27,.58));
-  box-shadow:0 24px 80px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035);
-  backdrop-filter:blur(18px);
-}
-.stats-heading{max-width:650px;margin-bottom:24px}
-.stats-heading .eyebrow{display:inline-block;margin-bottom:9px;font-size:.68rem;font-weight:800;letter-spacing:.18em;color:rgba(132,176,255,.85)}
-.stats-heading h2{margin:0 0 9px;font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.05}
-.stats-heading p{margin:0;color:rgba(220,228,245,.62);line-height:1.65}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.stat-card{
-  position:relative;min-height:155px;padding:20px;overflow:hidden;border:1px solid rgba(130,160,220,.12);
-  border-radius:20px;background:rgba(255,255,255,.025);
-  transition:transform .3s ease,border-color .3s ease,background .3s ease;
-}
-.stat-card::after{content:"";position:absolute;inset:auto -25% -65%;height:110px;background:radial-gradient(circle,rgba(65,126,255,.14),transparent 68%);pointer-events:none}
-.stat-card:hover{transform:translateY(-4px);border-color:rgba(104,153,255,.3);background:rgba(255,255,255,.04)}
-.stat-icon{display:block;margin-bottom:12px;font-size:1rem;color:rgba(132,176,255,.85)}
-.stat-number{display:block;font-size:clamp(1.65rem,3vw,2.25rem);line-height:1;letter-spacing:-.04em}
-.stat-label{display:block;margin-top:7px;font-weight:750}
-.stat-card small{display:block;margin-top:6px;color:rgba(220,228,245,.48)}
-.nc-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1)}
-.nc-reveal.nc-visible{opacity:1;transform:none}
-a:focus-visible,button:focus-visible{outline:2px solid rgba(110,164,255,.95);outline-offset:4px;border-radius:8px}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
-  .nc-cursor-spotlight{display:none}
-}
-@media(max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr)}.stats-shell{padding:22px}}
-@media(max-width:520px){.premium-stats{width:min(calc(100% - 20px),1100px);margin-top:44px}.stats-grid{grid-template-columns:1fr}.stat-card{min-height:auto}}
-
 </style>
-
-  <meta name="description" content="NEWCOSMO: portal digital con manuales, soluciones, store, tonos, wallpapers y recursos tecnológicos. Explora el ecosistema NEWCOSMO.">
-  <meta name="keywords" content="NEWCOSMO, manuales, soluciones, store, tonos, wallpapers, sonidos, recursos digitales, tecnología, Perú">
-  <meta name="author" content="NEWCOSMO">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="theme-color" content="#050814">
-  <link rel="canonical" href="https://newcosmo-peru.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="NEWCOSMO">
-  <meta property="og:title" content="NEWCOSMO | Portal Oficial">
-  <meta property="og:description" content="Tu ecosistema digital en un solo lugar: manuales, soluciones, store, tonos, wallpapers y más.">
-  <meta property="og:url" content="https://newcosmo-peru.github.io/">
-  <meta property="og:locale" content="es_PE">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NEWCOSMO | Portal Oficial">
-  <meta name="twitter:description" content="Explora el ecosistema digital de NEWCOSMO.">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"NEWCOSMO",
-    "url":"https://newcosmo-peru.github.io/",
-    "description":"Portal digital de NEWCOSMO con manuales, soluciones, store, tonos, wallpapers y recursos tecnológicos.",
-    "inLanguage":"es-PE"
-  }
-  </script>
-
 </head>
 <body>
 
@@ -961,24 +870,7 @@ a:focus-visible,button:focus-visible{outline:2px solid rgba(110,164,255,.95);out
 
     </main>
 
-    
-<section class="premium-stats" id="estadisticas" aria-label="Estadísticas de NEWCOSMO">
-  <div class="stats-shell">
-    <div class="stats-heading">
-      <span class="eyebrow">NEWCOSMO · EN NÚMEROS</span>
-      <h2>Un ecosistema que sigue creciendo</h2>
-      <p>Recursos digitales organizados para que encuentres lo que necesitas de forma rápida y sencilla.</p>
-    </div>
-    <div class="stats-grid">
-      <article class="stat-card"><span class="stat-icon">◈</span><strong class="stat-number" data-stat-target="50" data-stat-suffix="+">0</strong><span class="stat-label">Manuales</span><small>Guías y recursos prácticos</small></article>
-      <article class="stat-card"><span class="stat-icon">♪</span><strong class="stat-number" data-stat-target="120" data-stat-suffix="+">0</strong><span class="stat-label">Tonos</span><small>Sonidos para tu dispositivo</small></article>
-      <article class="stat-card"><span class="stat-icon">✦</span><strong class="stat-number" data-stat-target="4000" data-stat-suffix="+">0</strong><span class="stat-label">Wallpapers</span><small>Fondos para personalizar</small></article>
-      <article class="stat-card"><span class="stat-icon">↗</span><strong class="stat-number" data-stat-target="24" data-stat-suffix="/7">0</strong><span class="stat-label">Acceso</span><small>Portal disponible siempre</small></article>
-    </div>
-  </div>
-</section>
-
-<section class="faq-section">
+    <section class="faq-section">
         <h2>Preguntas Frecuentes</h2>
         <div class="faq-container">
             <div class="faq-item">
@@ -1152,27 +1044,5 @@ a:focus-visible,button:focus-visible{outline:2px solid rgba(110,164,255,.95);out
             });
         });
     </script>
-
-<script>
-/* NEWCOSMO Premium Experience: estadísticas, reveal y spotlight */
-(()=>{const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const items=document.querySelectorAll('.stat-card,.card,.faq-section,footer,.premium-stats');
-if(!reduced&&'IntersectionObserver'in window){
- items.forEach((el,i)=>{el.classList.add('nc-reveal');el.style.transitionDelay=`${Math.min(i*45,260)}ms`});
- const io=new IntersectionObserver((entries,obs)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('nc-visible');obs.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
- items.forEach(el=>io.observe(el));
-}else items.forEach(el=>el.classList.add('nc-visible'));
-const nums=document.querySelectorAll('.stat-number');
-const animate=el=>{const target=Number(el.dataset.statTarget||0),suffix=el.dataset.statSuffix||'',duration=reduced?0:1000,start=performance.now();
- const frame=now=>{const p=duration?Math.min((now-start)/duration,1):1,e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e).toLocaleString('es-PE')+suffix;if(p<1)requestAnimationFrame(frame)};requestAnimationFrame(frame)};
-const stats=document.querySelector('.premium-stats');
-if(stats&&'IntersectionObserver'in window){const so=new IntersectionObserver((entries,obs)=>{if(entries[0].isIntersecting){nums.forEach(animate);obs.disconnect()}},{threshold:.35});so.observe(stats)}else nums.forEach(animate);
-if(!reduced&&window.matchMedia('(pointer: fine)').matches){
- const s=document.createElement('div');s.className='nc-cursor-spotlight';document.body.appendChild(s);let raf=0,x=-500,y=-500;
- addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY;document.body.classList.add('nc-pointer-active');if(!raf)raf=requestAnimationFrame(()=>{s.style.left=x+'px';s.style.top=y+'px';raf=0})},{passive:true});
- addEventListener('pointerleave',()=>document.body.classList.remove('nc-pointer-active'));
-}})();
-</script>
-
 </body>
 </html>
