@@ -212,12 +212,87 @@ h1{
 }
 
 /* ==========================================================
-   GRID DE TARJETAS
+   SECCIÓN DE TARJETAS MÉTRICAS (Inspiradas en la imagen)
+   ========================================================== */
+.metrics-section {
+    width: min(100% - 40px, 900px);
+    margin: 10px auto 30px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.metric-card {
+    background: linear-gradient(145deg, rgba(13, 27, 52, 0.95), rgba(7, 14, 28, 0.98));
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 20px rgba(56,189,248,.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.8);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 25px rgba(56,189,248,.25);
+}
+
+.metric-icon-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(15, 28, 52, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+.metric-icon-box svg {
+    width: 24px;
+    height: 24px;
+    stroke: #38bdf8;
+    fill: none;
+    filter: drop-shadow(0 0 8px rgba(56,189,248,.8));
+}
+
+.metric-value {
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 50%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 25px rgba(56,189,248,.4);
+    letter-spacing: -1px;
+}
+
+.metric-label {
+    color: #cbd5e1;
+    font-size: 0.86rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ==========================================================
+   GRID DE TARJETAS PRINCIPALES
    ========================================================== */
 .grid-container{
     width:min(100% - 40px, 900px);
     margin:0 auto;
-    padding:20px 0 40px;
+    padding:10px 0 40px;
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:20px;
@@ -679,6 +754,7 @@ footer::before {
    RESPONSIVE DESIGN
    ========================================================== */
 @media(max-width:760px){
+    .metrics-section,
     .grid-container{
         grid-template-columns:repeat(2,minmax(0,1fr));
         width:min(100% - 28px,600px);
@@ -694,6 +770,7 @@ footer::before {
     header{padding-top:30px}
     .logo-img{width:160px;height:160px}
     h1{letter-spacing:2px;margin-bottom:10px}
+    .metrics-section,
     .grid-container{
         grid-template-columns:1fr;
         width:calc(100% - 28px);
@@ -754,6 +831,44 @@ footer::before {
             </div>
         </div>
     </header>
+
+    <!-- SECCIÓN DE TARJETAS MÉTRICAS (NUEVA) -->
+    <section class="metrics-section">
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/>
+                    <path d="M8 7h8M8 11h8"/>
+                </svg>
+            </div>
+            <div class="metric-value">+500</div>
+            <p class="metric-label">Recursos Disponibles</p>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0z"/>
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3z"/>
+                </svg>
+            </div>
+            <div class="metric-value">+100</div>
+            <p class="metric-label">Proyectos Digitales</p>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <div class="metric-value">99%</div>
+            <p class="metric-label">Satisfacción de Clientes</p>
+        </div>
+    </section>
 
     <main class="grid-container">
 
@@ -1035,6 +1150,7 @@ footer::before {
                 const isActive = item.classList.contains('active');
                 
                 document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('action', 'active'); // limpio
                     faq.classList.remove('active');
                 });
 
