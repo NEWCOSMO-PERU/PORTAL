@@ -216,7 +216,7 @@ h1{
    ========================================================== */
 .metrics-section {
     width: min(100% - 40px, 900px);
-    margin: 10px auto 30px;
+    margin: 30px auto;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
@@ -292,7 +292,7 @@ h1{
 .grid-container{
     width:min(100% - 40px, 900px);
     margin:0 auto;
-    padding:10px 0 40px;
+    padding:10px 0 20px;
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:20px;
@@ -432,7 +432,7 @@ h1{
    ========================================================== */
 .faq-section {
     width: min(100% - 40px, 900px);
-    margin: 30px auto 50px;
+    margin: 20px auto 10px;
     padding: 30px;
     background: linear-gradient(145deg, rgba(13, 27, 52, 0.92), rgba(7, 14, 28, 0.95));
     border: 1px solid rgba(56, 189, 248, 0.45);
@@ -832,44 +832,6 @@ footer::before {
         </div>
     </header>
 
-    <!-- SECCIÓN DE TARJETAS MÉTRICAS (NUEVA) -->
-    <section class="metrics-section">
-        <div class="metric-card">
-            <div class="metric-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/>
-                    <path d="M8 7h8M8 11h8"/>
-                </svg>
-            </div>
-            <div class="metric-value">+500</div>
-            <p class="metric-label">Recursos Disponibles</p>
-        </div>
-
-        <div class="metric-card">
-            <div class="metric-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0z"/>
-                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3z"/>
-                </svg>
-            </div>
-            <div class="metric-value">+100</div>
-            <p class="metric-label">Proyectos Digitales</p>
-        </div>
-
-        <div class="metric-card">
-            <div class="metric-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-            </div>
-            <div class="metric-value">99%</div>
-            <p class="metric-label">Satisfacción de Clientes</p>
-        </div>
-    </section>
-
     <main class="grid-container">
 
         <a href="https://newcosmo-peru.github.io/MANUALES/" target="_blank" rel="noopener" class="card">
@@ -994,7 +956,7 @@ footer::before {
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
                 <div class="faq-answer">
-                    Puedes hacer clic directamente en cualquiera de las tarjetas principales de nuestra plataforma para abrir el portal correspondiente de forma inmediata.
+                    Puedes hacer clic directamente en cualquiera de las tarjetas principales de nossa plataforma para abrir el portal correspondiente de forma inmediata.
                 </div>
             </div>
 
@@ -1017,6 +979,44 @@ footer::before {
                     Sí, actualizamos periódicamente nuestras colecciones de guías, tonos, fondos de pantalla y herramientas digitales.
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE TARJETAS MÉTRICAS (UBICADA DEBAJO DE FAQ) -->
+    <section class="metrics-section">
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/>
+                    <path d="M8 7h8M8 11h8"/>
+                </svg>
+            </div>
+            <div class="metric-value">+500</div>
+            <p class="metric-label">Recursos Disponibles</p>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0z"/>
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3 z"/>
+                </svg>
+            </div>
+            <div class="metric-value">+100</div>
+            <p class="metric-label">Proyectos Digitales</p>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <div class="metric-value">99%</div>
+            <p class="metric-label">Satisfacción de Clientes</p>
         </div>
     </section>
 
@@ -1150,7 +1150,6 @@ footer::before {
                 const isActive = item.classList.contains('active');
                 
                 document.querySelectorAll('.faq-item').forEach(faq => {
-                    faq.classList.remove('action', 'active'); // limpio
                     faq.classList.remove('active');
                 });
 
