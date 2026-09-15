@@ -175,7 +175,6 @@ h1 {
 .live-counter-bar {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
     padding: 8px 22px;
     background: rgba(15, 23, 42, 0.65);
     border: 1px solid rgba(0, 229, 255, 0.25);
@@ -189,13 +188,13 @@ h1 {
     align-items: center;
     gap: 8px;
     color: #94a3b8;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 500;
 }
 
 .live-dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background-color: #00e5ff;
     border-radius: 50%;
     box-shadow: 0 0 8px #00e5ff;
@@ -207,22 +206,10 @@ h1 {
     50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-.counter-item svg {
-    width: 16px;
-    height: 16px;
-    stroke: #00e5ff;
-}
-
 .counter-item strong {
     color: #ffffff;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-}
-
-.counter-divider {
-    width: 1px;
-    height: 14px;
-    background: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================
@@ -757,17 +744,11 @@ footer{
         </div>
         <h1>NEWCOSMO</h1>
         
+        <!-- SOLO CONTADOR DE VISITAS EN VIVO -->
         <div class="live-counter-bar">
             <div class="counter-item">
                 <span class="live-dot"></span>
                 <span>Visitas: <strong id="visit-counter">--</strong></span>
-            </div>
-            <div class="counter-divider"></div>
-            <div class="counter-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-                <span>Descargas: <strong id="download-counter">--</strong></span>
             </div>
         </div>
     </header>
@@ -1066,10 +1047,10 @@ footer{
         </a>
     </div>
 
-    <!-- SCRIPT JS SINCRO EN VIVO -->
+    <!-- SCRIPT JS EXCLUSIVO PARA VISITAS EN VIVO -->
     <script>
         const API_NAMESPACE = "newcosmo-peru";
-        const REFRESH_INTERVAL = 5000;
+        const REFRESH_INTERVAL = 5000; // Sincroniza cada 5 segundos
 
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
@@ -1083,6 +1064,7 @@ footer{
         async function registerVisitAndStartLiveSync() {
             const visitEl = document.getElementById('visit-counter');
 
+            // REGISTRO INICIAL (+1 Visita)
             try {
                 const visitResponse = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_visits/up`);
                 const visitData = await visitResponse.json();
@@ -1093,8 +1075,7 @@ footer{
                 if(visitEl) visitEl.textContent = "1,420";
             }
 
-            fetchDownloadsTotal();
-
+            // BUCLE EN VIVO (Revisa actualizaciones sin sumar)
             setInterval(async () => {
                 await syncLiveCounters();
             }, REFRESH_INTERVAL);
@@ -1114,22 +1095,7 @@ footer{
                     }
                 }
             } catch (e) {
-                // Mantiene el valor en pantalla si la red falla
-            }
-        }
-
-        async function fetchDownloadsTotal() {
-            const downloadEl = document.getElementById('download-counter');
-            try {
-                const downloadResponse = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_downloads`);
-                const downloadData = await downloadResponse.json();
-                if (downloadData && downloadData.count) {
-                    downloadEl.textContent = downloadData.count.toLocaleString();
-                } else {
-                    downloadEl.textContent = "935";
-                }
-            } catch (e) {
-                if(downloadEl) downloadEl.textContent = "935";
+                // Mantiene el valor en pantalla en caso de error silencioso
             }
         }
 
@@ -1148,19 +1114,7 @@ footer{
             }, 800);
         }
 
-        async function trackDownload() {
-            try {
-                const res = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_downloads/up`);
-                const data = await res.json();
-                const downloadEl = document.getElementById('download-counter');
-                if (downloadEl && data.count) {
-                    updateCounterWithEffect(downloadEl, data.count);
-                }
-            } catch (e) {
-                console.error("Error al registrar la descarga:", e);
-            }
-        }
-
+        // ACCORDEON FAQ
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
