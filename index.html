@@ -294,7 +294,7 @@ h1 {
 }
 
 /* ==========================================================
-   GRID DE TARJETAS PRINCIPALES (REDISEÑADO)
+   GRID DE TARJETAS PRINCIPALES
    ========================================================== */
 .grid-container{
     width:min(100% - 40px, 950px);
@@ -1066,54 +1066,99 @@ footer{
         </a>
     </div>
 
-    <!-- SCRIPT JS -->
+    <!-- SCRIPT JS SINCRO EN VIVO -->
     <script>
+        const API_NAMESPACE = "newcosmo-peru";
+        const REFRESH_INTERVAL = 5000;
+
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
             setTimeout(() => {
-                splash.classList.add('fade-out');
+                if(splash) splash.classList.add('fade-out');
             }, 500);
-            initLiveCounters();
+
+            registerVisitAndStartLiveSync();
         });
 
-        async function initLiveCounters() {
+        async function registerVisitAndStartLiveSync() {
             const visitEl = document.getElementById('visit-counter');
-            const downloadEl = document.getElementById('download-counter');
 
             try {
-                const namespace = "newcosmo-peru";
-                const visitResponse = await fetch(`https://api.counterapi.dev/v1/${namespace}/portal_visits/up`);
+                const visitResponse = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_visits/up`);
                 const visitData = await visitResponse.json();
-                animateValue(visitEl, 0, visitData.count || 1240, 1200);
-
-                const downloadResponse = await fetch(`https://api.counterapi.dev/v1/${namespace}/portal_downloads`);
-                const downloadData = await downloadResponse.json();
-                
-                let downloadCount = downloadData.count;
-                if (!downloadCount) {
-                    const initDL = await fetch(`https://api.counterapi.dev/v1/${namespace}/portal_downloads/up`);
-                    const initDLData = await initDL.json();
-                    downloadCount = initDLData.count || 850;
+                if (visitData && visitData.count) {
+                    updateCounterWithEffect(visitEl, visitData.count);
                 }
-                animateValue(downloadEl, 0, downloadCount, 1200);
             } catch (error) {
-                visitEl.textContent = "1,420";
-                downloadEl.textContent = "935";
+                if(visitEl) visitEl.textContent = "1,420";
+            }
+
+            fetchDownloadsTotal();
+
+            setInterval(async () => {
+                await syncLiveCounters();
+            }, REFRESH_INTERVAL);
+        }
+
+        async function syncLiveCounters() {
+            const visitEl = document.getElementById('visit-counter');
+            
+            try {
+                const res = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_visits`);
+                const data = await res.json();
+                
+                if (data && data.count) {
+                    const currentDisplayed = parseInt(visitEl.textContent.replace(/,/g, '')) || 0;
+                    if (data.count !== currentDisplayed) {
+                        updateCounterWithEffect(visitEl, data.count);
+                    }
+                }
+            } catch (e) {
+                // Mantiene el valor en pantalla si la red falla
             }
         }
 
-        function animateValue(element, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const currentVal = Math.floor(progress * (end - start) + start);
-                element.textContent = currentVal.toLocaleString();
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
+        async function fetchDownloadsTotal() {
+            const downloadEl = document.getElementById('download-counter');
+            try {
+                const downloadResponse = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_downloads`);
+                const downloadData = await downloadResponse.json();
+                if (downloadData && downloadData.count) {
+                    downloadEl.textContent = downloadData.count.toLocaleString();
+                } else {
+                    downloadEl.textContent = "935";
                 }
-            };
-            window.requestAnimationFrame(step);
+            } catch (e) {
+                if(downloadEl) downloadEl.textContent = "935";
+            }
+        }
+
+        function updateCounterWithEffect(element, newValue) {
+            if (!element) return;
+            
+            element.textContent = newValue.toLocaleString();
+            
+            element.style.transition = "color 0.3s ease, text-shadow 0.3s ease";
+            element.style.color = "#00e5ff";
+            element.style.textShadow = "0 0 12px #00e5ff";
+            
+            setTimeout(() => {
+                element.style.color = "#ffffff";
+                element.style.textShadow = "none";
+            }, 800);
+        }
+
+        async function trackDownload() {
+            try {
+                const res = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_downloads/up`);
+                const data = await res.json();
+                const downloadEl = document.getElementById('download-counter');
+                if (downloadEl && data.count) {
+                    updateCounterWithEffect(downloadEl, data.count);
+                }
+            } catch (e) {
+                console.error("Error al registrar la descarga:", e);
+            }
         }
 
         document.querySelectorAll('.faq-question').forEach(button => {
