@@ -13,8 +13,8 @@ html{scroll-behavior:smooth}
 body{
     font-family:'Inter',sans-serif;
     background:
-      radial-gradient(circle at 50% 8%, rgba(56,189,248,.22), transparent 35%),
-      radial-gradient(circle at 10% 70%, rgba(14,165,233,.18), transparent 40%),
+      radial-gradient(circle at 50% 0%, rgba(56,189,248,.18), transparent 40%),
+      radial-gradient(circle at 10% 70%, rgba(14,165,233,.12), transparent 45%),
       #030712;
     color:#f8fafc;
     min-height:100vh;
@@ -26,7 +26,7 @@ body::before{
     position:fixed;
     inset:0;
     pointer-events:none;
-    opacity:.5;
+    opacity:.4;
     background-image:
       radial-gradient(circle at 20% 30%, rgba(125,211,252,.8) 0 1.5px, transparent 2px),
       radial-gradient(circle at 75% 20%, rgba(56,189,248,.6) 0 1.5px, transparent 2px),
@@ -35,7 +35,7 @@ body::before{
 }
 
 /* ==========================================================
-   SPLASH DE CARGA INICIAL
+   SPLASH SCREEN
    ========================================================== */
 #splash-screen {
     position: fixed;
@@ -98,10 +98,8 @@ body::before{
 .splash-loader::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
     background: linear-gradient(90deg, transparent, #38bdf8, transparent);
     animation: loadingBar 1.2s infinite linear;
 }
@@ -113,9 +111,12 @@ body::before{
 
 main{position:relative;z-index:1}
 
+/* ==========================================================
+   HEADER
+   ========================================================== */
 header{
     text-align:center;
-    padding:56px 20px 30px;
+    padding:50px 20px 20px;
 }
 
 .logo-container{
@@ -123,28 +124,25 @@ header{
     display:inline-flex;
     justify-content:center;
     align-items:center;
-    margin-bottom:16px;
+    margin-bottom:12px;
 }
 
 .logo-container::after{
     content:'';
     position:absolute;
-    width:320px;
-    height:320px;
+    width:280px;
+    height:280px;
     border-radius:50%;
-    background:radial-gradient(circle,
-      rgba(56,189,248,.8) 0%,
-      rgba(14,165,233,.35) 40%,
-      transparent 75%);
+    background:radial-gradient(circle, rgba(56,189,248,.6) 0%, rgba(14,165,233,.2) 50%, transparent 75%);
     filter:blur(30px);
     z-index:-1;
 }
 
 .logo-img{
-    width:230px;
-    height:230px;
+    width:200px;
+    height:200px;
     object-fit:contain;
-    filter:drop-shadow(0 0 35px rgba(56,189,248,.9));
+    filter:drop-shadow(0 0 30px rgba(56,189,248,.8));
     animation:floatLogo 4s ease-in-out infinite;
 }
 
@@ -154,157 +152,158 @@ header{
 }
 
 h1{
-    font-size:clamp(3rem, 7vw, 4.8rem);
-    line-height:1;
+    font-size:clamp(2.8rem, 6vw, 4.2rem);
+    line-height:1.1;
     font-weight:800;
-    letter-spacing:4px;
+    letter-spacing:3px;
     margin:6px 0 16px;
-    background:linear-gradient(180deg,#ffffff 0%,#f0f9ff 30%,#7dd3fc 60%,#38bdf8 85%,#0284c7 100%);
+    background:linear-gradient(180deg,#ffffff 0%,#f0f9ff 30%,#7dd3fc 65%,#38bdf8 100%);
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
-    text-shadow:0 0 40px rgba(56,189,248,.65);
+    text-shadow:0 0 35px rgba(56,189,248,.5);
 }
 
-/* ==========================================================
-   BARRA DE CONTADORES EN VIVO
-   ========================================================== */
 .live-counter-bar {
     display: inline-flex;
     align-items: center;
     gap: 16px;
-    margin-top: 8px;
-    padding: 9px 22px;
-    background: rgba(13, 27, 52, 0.9);
-    border: 1px solid rgba(56, 189, 248, 0.5);
+    padding: 8px 20px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.35);
     border-radius: 999px;
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(56,189,248,.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56,189,248,.15);
 }
 
 .counter-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #e2e8f0;
-    font-size: 0.84rem;
+    color: #94a3b8;
+    font-size: 0.82rem;
     font-weight: 500;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #38bdf8;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #38bdf8;
+    animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
 }
 
 .counter-item svg {
     width: 16px;
     height: 16px;
     stroke: #38bdf8;
-    filter: drop-shadow(0 0 8px rgba(56,189,248,.9));
 }
 
 .counter-item strong {
     color: #ffffff;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-    text-shadow: 0 0 10px rgba(56,189,248,.4);
 }
 
 .counter-divider {
     width: 1px;
     height: 14px;
-    background: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.3);
 }
 
 /* ==========================================================
-   SECCIÓN DE TARJETAS MÉTRICAS
+   METRICAS (AQUÍ REUBICADAS PARA IMPACTO INICIAL)
    ========================================================== */
 .metrics-section {
-    width: min(100% - 40px, 900px);
-    margin: 30px auto;
+    width: min(100% - 40px, 950px);
+    margin: 24px auto 36px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    gap: 16px;
 }
 
 .metric-card {
-    background: linear-gradient(145deg, rgba(13, 27, 52, 0.95), rgba(7, 14, 28, 0.98));
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.2);
     border-radius: 16px;
-    padding: 28px 20px;
-    text-align: center;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 20px rgba(56,189,248,.08);
+    padding: 20px;
+    backdrop-filter: blur(12px);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    gap: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
 }
 
 .metric-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(56, 189, 248, 0.8);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 25px rgba(56,189,248,.25);
+    border-color: rgba(56, 189, 248, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 20px rgba(56,189,248,.15);
 }
 
 .metric-icon-box {
-    width: 48px;
-    height: 48px;
-    background: rgba(15, 28, 52, 0.9);
-    border: 1px solid rgba(56, 189, 248, 0.35);
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
 }
 
 .metric-icon-box svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     stroke: #38bdf8;
     fill: none;
-    filter: drop-shadow(0 0 8px rgba(56,189,248,.8));
+}
+
+.metric-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .metric-value {
     color: #ffffff;
-    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-size: 1.6rem;
     font-weight: 800;
-    line-height: 1;
-    margin-bottom: 10px;
-    background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 50%, #38bdf8 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 25px rgba(56,189,248,.4);
-    letter-spacing: -1px;
+    line-height: 1.1;
 }
 
 .metric-label {
-    color: #cbd5e1;
-    font-size: 0.86rem;
+    color: #94a3b8;
+    font-size: 0.78rem;
     font-weight: 500;
-    margin: 0;
 }
 
 /* ==========================================================
    GRID DE TARJETAS PRINCIPALES
    ========================================================== */
 .grid-container{
-    width:min(100% - 40px, 900px);
+    width:min(100% - 40px, 950px);
     margin:0 auto;
-    padding:10px 0 20px;
+    padding:10px 0 30px;
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:20px;
 }
 
 .card{
-    min-height:160px;
-    padding:18px;
-    border:1px solid rgba(56,189,248,.45);
-    border-radius:12px;
-    background:linear-gradient(145deg,rgba(15,28,52,0.95),rgba(7,14,28,0.95));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 12px 35px rgba(0,0,0,.35), 0 0 15px rgba(56,189,248,.1);
+    min-height:175px;
+    padding:22px;
+    border:1px solid rgba(56,189,248,.25);
+    border-radius:16px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
     text-decoration:none;
     color:inherit;
     display:flex;
@@ -312,43 +311,40 @@ h1{
     justify-content:space-between;
     position:relative;
     overflow:hidden;
-    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+    transition:all .3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card::before{
     content:'';
     position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:3px;
-    background:linear-gradient(90deg,transparent,#38bdf8,transparent);
-    opacity:0.4;
-    transition:opacity .25s ease, height .25s ease;
+    top:0; left:0; width:100%; height:2px;
+    background:linear-gradient(90deg, transparent, #38bdf8, transparent);
+    opacity:0.3;
+    transition:opacity .3s ease, height .3s ease;
 }
 
 .card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(56,189,248,1);
-    box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 30px rgba(56,189,248,.35);
+    transform:translateY(-6px);
+    border-color:rgba(56,189,248,0.8);
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow:0 20px 40px rgba(0,0,0,.5), 0 0 25px rgba(56,189,248,.25);
 }
 
-.card:hover::before{opacity:1; height:4px;}
+.card:hover::before{ opacity:1; height:3px; }
 
 .card-badge {
     position: absolute;
-    top: 12px;
+    top: 14px;
     right: 14px;
-    background: rgba(56, 189, 248, 0.25);
-    border: 1px solid rgba(56, 189, 248, 0.6);
-    color: #e0f2fe;
+    background: rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    color: #7dd3fc;
     font-size: 0.62rem;
     font-weight: 700;
     padding: 3px 8px;
     border-radius: 999px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
 }
 
 .card-top{
@@ -358,97 +354,96 @@ h1{
 }
 
 .icon-box{
-    flex:0 0 44px;
-    width:44px;
-    height:44px;
+    flex:0 0 46px;
+    width:46px;
+    height:46px;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:99px;
-    background:rgba(56,189,248,.15);
-    border: 1px solid rgba(56,189,248,.3);
+    border-radius:12px;
+    background:rgba(56,189,248,.1);
+    border: 1px solid rgba(56,189,248,.25);
+    transition: all 0.3s ease;
 }
 
 .icon-box svg{
-    width:32px;
-    height:32px;
-    stroke:#e0f2fe;
-    filter:drop-shadow(0 0 8px rgba(56,189,248,.8));
+    width:24px;
+    height:24px;
+    stroke:#7dd3fc;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .icon-box{
+    background:rgba(56,189,248,.2);
+    border-color:rgba(56,189,248,.6);
 }
 
 .card:hover .icon-box svg{
     stroke:#38bdf8;
-    filter:drop-shadow(0 0 12px rgba(56,189,248,1));
+    transform: scale(1.1);
 }
 
 .card h3{
     color:#ffffff;
-    font-size:1.15rem;
+    font-size:1.1rem;
     font-weight:700;
-    letter-spacing:.2px;
-    margin:1px 0 4px;
-    text-shadow: 0 0 10px rgba(56,189,248,.3);
+    margin:2px 0 4px;
 }
 
 .card p{
-    color:#e2e8f0;
-    font-size:.8rem;
-    line-height:1.3;
+    color:#94a3b8;
+    font-size:.82rem;
+    line-height:1.4;
     margin:0;
 }
 
+.card-footer-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .card-meta {
-    display: block;
     color: #38bdf8;
     font-size: 0.72rem;
     font-weight: 600;
-    margin-top: 6px;
-    text-shadow: 0 0 8px rgba(56,189,248,.4);
 }
 
-.card-btn{
-    align-self:center;
-    min-width:125px;
-    margin-top:12px;
-    padding:7px 18px;
-    border-radius:999px;
-    border:1px solid rgba(56,189,248,1);
-    background:linear-gradient(180deg,#e0f2fe 0%,#7dd3fc 45%,#0284c7 100%);
-    color:#030712;
-    font-size:.78rem;
-    font-weight:700;
-    text-align:center;
-    box-shadow:0 0 25px rgba(56,189,248,.5);
-    transition:transform .2s ease,box-shadow .2s ease;
+.arrow-icon {
+    width: 18px;
+    height: 18px;
+    stroke: #7dd3fc;
+    transition: transform 0.3s ease;
 }
 
-.card:hover .card-btn{
-    transform:scale(1.03);
-    box-shadow:0 0 35px rgba(56,189,248,.8);
+.card:hover .arrow-icon {
+    transform: translateX(4px);
+    stroke: #38bdf8;
 }
 
 /* ==========================================================
-   SECCIÓN DE PREGUNTAS FRECUENTES (FAQ)
+   SECCIÓN FAQ CON ANIMACIÓN OPTIMIZADA
    ========================================================== */
 .faq-section {
-    width: min(100% - 40px, 900px);
-    margin: 20px auto 10px;
-    padding: 30px;
-    background: linear-gradient(145deg, rgba(13, 27, 52, 0.92), rgba(7, 14, 28, 0.95));
-    border: 1px solid rgba(56, 189, 248, 0.45);
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.45), 0 0 20px rgba(56,189,248,.12);
+    width: min(100% - 40px, 950px);
+    margin: 20px auto;
+    padding: 32px;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
 }
 
 .faq-section h2 {
-    color: #7dd3fc;
-    font-size: 1.6rem;
+    color: #ffffff;
+    font-size: 1.4rem;
     font-weight: 800;
     text-align: center;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 0 20px rgba(56,189,248,.7);
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
 }
 
 .faq-container {
@@ -458,16 +453,15 @@ h1{
 }
 
 .faq-item {
-    background: rgba(15, 28, 52, 0.85);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    border-radius: 10px;
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 12px;
     overflow: hidden;
     transition: border-color 0.25s ease;
 }
 
 .faq-item:hover {
-    border-color: rgba(56, 189, 248, 0.8);
-    box-shadow: 0 0 15px rgba(56,189,248,.2);
+    border-color: rgba(56, 189, 248, 0.4);
 }
 
 .faq-question {
@@ -475,22 +469,21 @@ h1{
     padding: 16px 20px;
     background: none;
     border: none;
-    color: #ffffff;
-    font-size: 0.95rem;
-    font-weight: 700;
+    color: #f8fafc;
+    font-size: 0.92rem;
+    font-weight: 600;
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
+    font-family: inherit;
 }
 
 .faq-question svg {
     width: 18px;
     height: 18px;
-    stroke: #7dd3fc;
-    filter: drop-shadow(0 0 6px rgba(56,189,248,.8));
+    stroke: #38bdf8;
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
@@ -499,184 +492,151 @@ h1{
     transform: rotate(180deg);
 }
 
+.faq-answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+}
+
+.faq-item.active .faq-answer-wrapper {
+    grid-template-rows: 1fr;
+}
+
 .faq-answer {
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    padding: 0 20px;
-    color: #e2e8f0;
-    font-size: 0.88rem;
+    color: #94a3b8;
+    font-size: 0.86rem;
     line-height: 1.6;
+    padding: 0 20px;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 200px;
-    padding: 0 20px 16px 20px;
+    padding-bottom: 16px;
 }
 
 /* ==========================================================
-   FOOTER PRO
+   FOOTER MODERNO
    ========================================================== */
 footer{
     position:relative;
     z-index:1;
-    background:
-      radial-gradient(circle at 50% 0%, rgba(56,189,248,.3), transparent 50%),
-      radial-gradient(circle at 15% 100%, rgba(14,165,233,.2), transparent 45%),
-      linear-gradient(180deg, rgba(13,27,52,0.95), #030712);
-    border-top:2px solid rgba(56,189,248,.6);
-    box-shadow: 0 -20px 45px rgba(56,189,248,.18);
-    padding:65px 20px 30px;
-    margin-top:50px;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 20%;
-    right: 20%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-    filter: drop-shadow(0 0 15px #38bdf8);
+    background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.9) 30%, #030712);
+    border-top:1px solid rgba(56,189,248,.2);
+    padding:60px 20px 24px;
+    margin-top:60px;
 }
 
 .footer-content{
-    width:min(100%, 1000px);
+    width:min(100%, 950px);
     margin:0 auto;
     display:grid;
-    grid-template-columns: 1.5fr 1.2fr 1.3fr;
+    grid-template-columns: 1.4fr 1.3fr 1.1fr;
     gap:40px;
     padding-bottom:40px;
 }
 
 .footer-col h4{
-    color:#7dd3fc;
-    font-size:.95rem;
-    font-weight:800;
-    letter-spacing:1.5px;
-    margin-bottom:18px;
+    color:#ffffff;
+    font-size:.9rem;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:16px;
     text-transform:uppercase;
-    text-shadow: 0 0 20px rgba(56,189,248,.7);
 }
 
 .footer-col p{
-    color:#e2e8f0;
+    color:#94a3b8;
     font-size:.85rem;
-    line-height:1.7;
-    margin-bottom:12px;
+    line-height:1.6;
+    margin-bottom:10px;
 }
 
 .footer-col p strong {
-    color: #7dd3fc;
-    text-shadow: 0 0 8px rgba(56,189,248,.5);
+    color: #e2e8f0;
 }
 
 .footer-pages-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 5px;
+    gap: 8px;
 }
 
 .footer-page-card {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 9px 13px;
-    background: linear-gradient(145deg, rgba(20, 38, 68, 0.9), rgba(10, 20, 38, 0.9));
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    border-radius: 9px;
-    color: #f8fafc;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 8px;
+    color: #cbd5e1;
     text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 500;
     transition: all 0.25s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .footer-page-card svg {
-    width: 18px;
-    height: 18px;
-    stroke: #7dd3fc;
-    filter: drop-shadow(0 0 6px rgba(56,189,248,.8));
+    width: 15px;
+    height: 15px;
+    stroke: #38bdf8;
     flex-shrink: 0;
-    transition: transform 0.2s ease;
 }
 
 .footer-page-card:hover {
-    background: linear-gradient(145deg, rgba(56, 189, 248, 0.35), rgba(15, 28, 52, 0.95));
-    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.5);
     color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(56, 189, 248, 0.45);
-}
-
-.footer-page-card:hover svg {
-    transform: scale(1.15);
 }
 
 .footer-socials{
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
-    margin-top: 18px;
+    margin-top: 16px;
 }
 
 .social-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(15, 28, 52, 0.9);
-    border: 1px solid rgba(56, 189, 248, 0.5);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(56, 189, 248, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #7dd3fc;
     text-decoration: none;
     transition: all 0.25s ease;
-    box-shadow: 0 0 15px rgba(56,189,248,.25);
 }
 
 .social-icon:hover {
     background: #38bdf8;
     border-color: #38bdf8;
     color: #030712;
-    transform: translateY(-4px);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
 }
 
 .social-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     fill: currentColor;
 }
 
-.social-icon[aria-label="OnlyFans"]:hover {
-    background: #00aff0; border-color: #00aff0; color: #fff; box-shadow: 0 0 30px rgba(0, 175, 240, 0.9);
-}
-.social-icon[aria-label="TikTok"]:hover {
-    background: #ff0050; border-color: #ff0050; color: #fff; box-shadow: 0 0 30px rgba(255, 0, 80, 0.9);
-}
-.social-icon[aria-label="YouTube"]:hover {
-    background: #ff0000; border-color: #ff0000; color: #fff; box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
-}
-
 .footer-bottom{
-    width:min(100%, 1000px);
+    width:min(100%, 950px);
     margin:0 auto;
-    padding-top:25px;
-    border-top:1px solid rgba(56,189,248,.3);
+    padding-top:20px;
+    border-top:1px solid rgba(255, 255, 255, 0.05);
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
-    color:#cbd5e1;
-    font-size:.8rem;
-    text-align: center;
+    color:#64748b;
+    font-size:.78rem;
 }
 
 /* ==========================================================
-   BOTÓN FLOTANTE WHATSAPP
+   WHATSAPP FLOTANTE
    ========================================================== */
 .floating-container {
     position: fixed;
@@ -685,119 +645,81 @@ footer::before {
     z-index: 99;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .whatsapp-badge {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(13, 27, 52, 0.95);
-    border: 1px solid rgba(56, 189, 248, 0.45);
-    padding: 10px 16px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 8px 14px;
     border-radius: 999px;
     color: #f8fafc;
-    font-size: 0.85rem;
-    font-weight: 600;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56,189,248,.2);
+    font-size: 0.8rem;
+    font-weight: 500;
     backdrop-filter: blur(8px);
-    pointer-events: none;
-    white-space: nowrap;
-}
-
-.whatsapp-badge .dot {
-    width: 9px;
-    height: 9px;
-    background-color: #38bdf8;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #38bdf8;
-    animation: pulse-celeste 2s infinite;
-}
-
-@keyframes pulse-celeste {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.9); }
-    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .floating-whatsapp {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: linear-gradient(135deg, #38bdf8, #0284c7);
     color: #030712;
     text-decoration: none;
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5), 0 0 20px rgba(56, 189, 248, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    flex-shrink: 0;
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+    transition: all 0.3s ease;
 }
 
 .floating-whatsapp:hover {
-    transform: scale(1.12) translateY(-3px);
-    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.8), 0 0 30px rgba(56, 189, 248, 0.7);
-    background: linear-gradient(135deg, #7dd3fc, #0ea5e9);
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(56, 189, 248, 0.6);
 }
 
 .floating-whatsapp svg {
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
     fill: currentColor;
-    filter: drop-shadow(0 0 4px rgba(3, 7, 18, 0.3));
 }
 
 /* ==========================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    ========================================================== */
-@media(max-width:760px){
+@media(max-width:820px){
     .metrics-section,
     .grid-container{
         grid-template-columns:repeat(2,minmax(0,1fr));
-        width:min(100% - 28px,600px);
         gap:14px;
     }
     .footer-content{
         grid-template-columns: 1fr;
-        gap:30px;
+        gap:28px;
     }
 }
 
-@media(max-width:520px){
+@media(max-width:540px){
     header{padding-top:30px}
-    .logo-img{width:160px;height:160px}
-    h1{letter-spacing:2px;margin-bottom:10px}
+    .logo-img{width:150px;height:150px}
     .metrics-section,
     .grid-container{
         grid-template-columns:1fr;
-        width:calc(100% - 28px);
-    }
-    .card{min-height:150px}
-    .footer-content{
-        grid-template-columns: 1fr;
-        gap:24px;
     }
     .whatsapp-badge {
         display: none;
     }
-    .floating-container {
-        bottom: 20px;
-        right: 20px;
-    }
-    .live-counter-bar {
+    .footer-bottom {
         flex-direction: column;
-        gap: 6px;
-        border-radius: 12px;
-        padding: 8px 14px;
-    }
-    .counter-divider {
-        display: none;
+        gap: 8px;
+        text-align: center;
     }
 }
-</style>
+    </style>
 </head>
 <body>
 
@@ -816,10 +738,7 @@ footer::before {
         
         <div class="live-counter-bar">
             <div class="counter-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>
+                <span class="live-dot"></span>
                 <span>Visitas: <strong id="visit-counter">--</strong></span>
             </div>
             <div class="counter-divider"></div>
@@ -832,7 +751,49 @@ footer::before {
         </div>
     </header>
 
-    <!-- TARJETAS PRINCIPALES EN ORDEN ALFABÉTICO (A-Z) -->
+    <!-- TARJETAS MÉTRICAS (UBICACIÓN OPTIMIZADA AL INICIO) -->
+    <section class="metrics-section">
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/>
+                    <path d="M8 7h8M8 11h8"/>
+                </svg>
+            </div>
+            <div class="metric-info">
+                <span class="metric-value">+500</span>
+                <span class="metric-label">Recursos Disponibles</span>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                </svg>
+            </div>
+            <div class="metric-info">
+                <span class="metric-value">+100</span>
+                <span class="metric-label">Proyectos Digitales</span>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <div class="metric-info">
+                <span class="metric-value">99%</span>
+                <span class="metric-label">Satisfacción Garantizada</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRID DE TARJETAS PRINCIPALES -->
     <main class="grid-container">
 
         <!-- 1. APPS -->
@@ -849,11 +810,13 @@ footer::before {
                 </div>
                 <div>
                     <h3>APPS</h3>
-                    <p>Aplicaciones y Herramientas</p>
-                    <span class="card-meta">Software & Utilitarios</span>
+                    <p>Aplicaciones y Herramientas de optimización</p>
                 </div>
             </div>
-            <span class="card-btn">Colecciones</span>
+            <div class="card-footer-action">
+                <span class="card-meta">Software & Utilitarios</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
         </a>
 
         <!-- 2. MANUALES -->
@@ -868,11 +831,13 @@ footer::before {
                 </div>
                 <div>
                     <h3>MANUALES</h3>
-                    <p>Guías de Uso Oficiales</p>
-                    <span class="card-meta">+50 Guías disponibles</span>
+                    <p>Guías paso a paso detalladas</p>
                 </div>
             </div>
-            <span class="card-btn">Colecciones</span>
+            <div class="card-footer-action">
+                <span class="card-meta">+50 Guías disponibles</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
         </a>
 
         <!-- 3. SOLUCIONES -->
@@ -884,16 +849,17 @@ footer::before {
                         <path d="m14.7 6.3 3-3a4 4 0 0 1 0 5.7l-2 2"/>
                         <path d="m9.3 17.7-3 3a4 4 0 0 1-5.7-5.7l2-2"/>
                         <path d="m8 16 8-8"/>
-                        <path d="m12 4 2 2M18 10l2 2"/>
                     </svg>
                 </div>
                 <div>
                     <h3>SOLUCIONES</h3>
-                    <p>Resolución de incidencias y Tips</p>
-                    <span class="card-meta">Soporte técnico</span>
+                    <p>Resolución rápida de incidencias</p>
                 </div>
             </div>
-            <span class="card-btn">Colecciones</span>
+            <div class="card-footer-action">
+                <span class="card-meta">Soporte Técnico</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
         </a>
 
         <!-- 4. STORE -->
@@ -905,16 +871,17 @@ footer::before {
                         <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 8H6"/>
                         <circle cx="10" cy="20" r="1.2"/>
                         <circle cx="18" cy="20" r="1.2"/>
-                        <path d="M8 8h11"/>
                     </svg>
                 </div>
                 <div>
                     <h3>STORE</h3>
                     <p>Catálogo de Productos Digitales</p>
-                    <span class="card-meta">Nuevos ítems</span>
                 </div>
             </div>
-            <span class="card-btn">Colecciones</span>
+            <div class="card-footer-action">
+                <span class="card-meta">Nuevos Ítems</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
         </a>
 
         <!-- 5. TONOS -->
@@ -928,11 +895,13 @@ footer::before {
                 </div>
                 <div>
                     <h3>TONOS</h3>
-                    <p>Tonos de Llamada y Sonidos</p>
-                    <span class="card-meta">+120 Tonos HD</span>
+                    <p>Tonos de Llamada y Notificaciones</p>
                 </div>
             </div>
-            <span class="card-btn">Colecciones</span>
+            <div class="card-footer-action">
+                <span class="card-meta">+120 Tonos HD</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
         </a>
 
         <!-- 6. WALLPAPERS -->
@@ -948,88 +917,60 @@ footer::before {
                 </div>
                 <div>
                     <h3>WALLPAPERS</h3>
-                    <p>Fondos en Alta Resolución</p>
-                    <span class="card-meta">Galería amplia</span>
+                    <p>Fondos exclusivos en alta definición</p>
                 </div>
             </div>
-            <span class="card-btn">Colecciones</span>
+            <div class="card-footer-action">
+                <span class="card-meta">Galería Amplia</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
         </a>
 
     </main>
 
+    <!-- PREGUNTAS FRECUENTES -->
     <section class="faq-section">
         <h2>Preguntas Frecuentes</h2>
         <div class="faq-container">
             <div class="faq-item">
-                <button class="faq-question">
+                <button class="faq-question" aria-expanded="false">
                     ¿Cómo puedo acceder a los manuales y recursos digitales?
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
-                <div class="faq-answer">
-                    Puedes hacer clic directamente en cualquiera de las tarjetas principales de nuestra plataforma para abrir el portal correspondiente de forma inmediata.
+                <div class="faq-answer-wrapper">
+                    <div class="faq-answer">
+                        Puedes hacer clic directamente en cualquiera de las tarjetas principales de nuestra plataforma para abrir el portal correspondiente de forma inmediata.
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
-                <button class="faq-question">
+                <button class="faq-question" aria-expanded="false">
                     ¿Cómo me comunico con el soporte técnico o asesoría?
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
-                <div class="faq-answer">
-                    En la esquina inferior derecha encontrarás nuestro botón flotante habilitado con un indicador en línea para contactar con un asesor.
+                <div class="faq-answer-wrapper">
+                    <div class="faq-answer">
+                        En la esquina inferior derecha encontrarás nuestro botón flotante habilitado con un indicador en línea para contactar directamente por WhatsApp.
+                    </div>
                 </div>
             </div>
 
             <div class="faq-item">
-                <button class="faq-question">
+                <button class="faq-question" aria-expanded="false">
                     ¿Los recursos y descargas se actualizan constantemente?
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
-                <div class="faq-answer">
-                    Sí, actualizamos periódicamente nuestras colecciones de guías, tonos, aplicaciones, fondos de pantalla y herramientas digitales.
+                <div class="faq-answer-wrapper">
+                    <div class="faq-answer">
+                        Sí, actualizamos periódicamente nuestras colecciones de guías, tonos, aplicaciones, fondos de pantalla y herramientas digitales.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN DE TARJETAS MÉTRICAS -->
-    <section class="metrics-section">
-        <div class="metric-card">
-            <div class="metric-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/>
-                    <path d="M8 7h8M8 11h8"/>
-                </svg>
-            </div>
-            <div class="metric-value">+500</div>
-            <p class="metric-label">Recursos Disponibles</p>
-        </div>
-
-        <div class="metric-card">
-            <div class="metric-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0z"/>
-                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3 z"/>
-                </svg>
-            </div>
-            <div class="metric-value">+100</div>
-            <p class="metric-label">Proyectos Digitales</p>
-        </div>
-
-        <div class="metric-card">
-            <div class="metric-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-            </div>
-            <div class="metric-value">99%</div>
-            <p class="metric-label">Satisfacción de Clientes</p>
-        </div>
-    </section>
-
+    <!-- FOOTER OPTIMIZADO -->
     <footer>
         <div class="footer-content">
             <div class="footer-col">
@@ -1038,9 +979,6 @@ footer::before {
                 <div class="footer-socials">
                     <a href="https://github.com/newcosmo-peru" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
                         <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                    <a href="https://onlyfans.com/tu-usuario" target="_blank" rel="noopener" class="social-icon" aria-label="OnlyFans">
-                        <svg viewBox="0 0 24 24"><path d="M15.464 10.518a4.57 4.57 0 0 0-3.376-1.503c-2.484 0-4.5 2.016-4.5 4.5s2.016 4.5 4.5 4.5c1.373 0 2.602-.622 3.42-1.604l1.642 1.198a6.71 6.71 0 0 1-5.062 2.206c-3.728 0-6.75-3.022-6.75-6.75s3.022-6.75 6.75-6.75c2.083 0 3.948.937 5.203 2.417l-1.827 1.286zM21.11 3.551C19.346 1.83 16.924.844 14.25.844c-3.86 0-7.152 2.39-8.49 5.795a10.638 10.638 0 0 0-2.31 6.643c0 5.903 4.784 10.687 10.687 10.687 2.923 0 5.581-1.155 7.527-3.033l-1.52-1.378a8.473 8.473 0 0 1-6.007 2.411C8.243 21.969 4.38 18.106 4.38 13.282c0-2.052.698-3.946 1.867-5.449 1.246-1.585 3.161-2.613 5.303-2.613 1.963 0 3.738.826 5.011 2.155l1.55-1.543a10.495 10.495 0 0 0-1.001-.849z"/></svg>
                     </a>
                     <a href="https://tiktok.com/@tu-usuario" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok">
                         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
@@ -1055,35 +993,35 @@ footer::before {
                 <h4>Explorar Páginas</h4>
                 <div class="footer-pages-grid">
                     <a href="https://newcosmo-peru.github.io/APPS/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg>
                         Apps
                     </a>
                     <a href="https://newcosmo-peru.github.io/MANUALES/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/><path d="M8 7h8M8 11h8"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/><path d="M8 7h8M8 11h8"/></svg>
                         Manuales
                     </a>
                     <a href="https://newcosmo-peru.github.io/SOLUCIONES/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.7 6.3 3-3a4 4 0 0 1 0 5.7l-2 2"/><path d="m8 16 8-8"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m14.7 6.3 3-3a4 4 0 0 1 0 5.7l-2 2"/><path d="m8 16 8-8"/></svg>
                         Soluciones
                     </a>
                     <a href="https://newcosmo-peru.github.io/STORE/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 8H6"/></svg>
                         Store
                     </a>
                     <a href="https://newcosmo-peru.github.io/TONOS/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v4M8 9v10M12 5v14M16 8v11M20 11v5"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 12v4M8 9v10M12 5v14M16 8v11M20 11v5"/></svg>
                         Tonos
                     </a>
                     <a href="https://newcosmo-peru.github.io/WALLPAPERS/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-4.2-4.2a1.8 1.8 0 0 0-2.6 0L6 19"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
                         Wallpapers
                     </a>
                 </div>
             </div>
 
             <div class="footer-col">
-                <h4>Contacto y Ubicación</h4>
-                <p><strong>Correo:</strong> www.newcosmo@outlook.es</p>
+                <h4>Contacto</h4>
+                <p><strong>Correo:</strong> newcosmo@outlook.es</p>
                 <p><strong>Teléfono:</strong> +51 907 546 093</p>
                 <p><strong>Ubicación:</strong> Trujillo, La Libertad, Perú</p>
             </div>
@@ -1091,13 +1029,13 @@ footer::before {
         
         <div class="footer-bottom">
             <p>&copy; 2026 NEWCOSMO. Todos los derechos reservados.</p>
+            <p>Diseñado para alto rendimiento.</p>
         </div>
     </footer>
 
     <div class="floating-container">
         <div class="whatsapp-badge">
-            <span class="dot"></span>
-            Asesor técnico en línea
+            Soporte en línea
         </div>
         <a href="https://wa.me/51907546093" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="WhatsApp">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1111,7 +1049,7 @@ footer::before {
             const splash = document.getElementById('splash-screen');
             setTimeout(() => {
                 splash.classList.add('fade-out');
-            }, 600);
+            }, 500);
             initLiveCounters();
         });
 
@@ -1162,10 +1100,12 @@ footer::before {
                 
                 document.querySelectorAll('.faq-item').forEach(faq => {
                     faq.classList.remove('active');
+                    faq.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                 });
 
                 if (!isActive) {
                     item.classList.add('active');
+                    button.setAttribute('aria-expanded', 'true');
                 }
             });
         });
