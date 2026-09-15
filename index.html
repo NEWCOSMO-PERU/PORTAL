@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEWCOSMO | Portal Oficial</title>
+    
+    <!-- Meta etiquetas SEO y redes sociales (Open Graph) -->
+    <meta name="description" content="NEWCOSMO: Portal centralizado de apps, manuales, soluciones técnicas, tienda digital, tonos y fondos de pantalla en alta resolución.">
+    <meta property="og:title" content="NEWCOSMO | Portal Oficial">
+    <meta property="og:description" content="Accede a recursos digitales, guías, tonos, wallpapers y soporte técnico.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -34,9 +41,6 @@ body::before{
     background-size:150px 150px,210px 210px,180px 180px;
 }
 
-/* ==========================================================
-   SPLASH DE CARGA INICIAL
-   ========================================================== */
 #splash-screen {
     position: fixed;
     inset: 0;
@@ -115,7 +119,7 @@ main{position:relative;z-index:1}
 
 header{
     text-align:center;
-    padding:56px 20px 30px;
+    padding:56px 20px 20px;
 }
 
 .logo-container{
@@ -132,10 +136,7 @@ header{
     width:320px;
     height:320px;
     border-radius:50%;
-    background:radial-gradient(circle,
-      rgba(56,189,248,.8) 0%,
-      rgba(14,165,233,.35) 40%,
-      transparent 75%);
+    background:radial-gradient(circle, rgba(56,189,248,.8) 0%, rgba(14,165,233,.35) 40%, transparent 75%);
     filter:blur(30px);
     z-index:-1;
 }
@@ -166,9 +167,6 @@ h1{
     text-shadow:0 0 40px rgba(56,189,248,.65);
 }
 
-/* ==========================================================
-   BARRA DE CONTADORES EN VIVO
-   ========================================================== */
 .live-counter-bar {
     display: inline-flex;
     align-items: center;
@@ -211,84 +209,41 @@ h1{
     background: rgba(56, 189, 248, 0.4);
 }
 
-/* ==========================================================
-   SECCIÓN DE TARJETAS MÉTRICAS
-   ========================================================== */
-.metrics-section {
-    width: min(100% - 40px, 900px);
-    margin: 30px auto;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}
-
-.metric-card {
-    background: linear-gradient(145deg, rgba(13, 27, 52, 0.95), rgba(7, 14, 28, 0.98));
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 16px;
-    padding: 28px 20px;
-    text-align: center;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 20px rgba(56,189,248,.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* --- MEJORA: Buscador en tiempo real --- */
+.search-container {
+    width: min(100% - 40px, 500px);
+    margin: 24px auto 10px;
     position: relative;
-    overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.metric-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(56, 189, 248, 0.8);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 25px rgba(56,189,248,.25);
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    background: rgba(15, 28, 52, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
-.metric-icon-box {
-    width: 48px;
-    height: 48px;
-    background: rgba(15, 28, 52, 0.9);
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+.search-input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
-.metric-icon-box svg {
-    width: 24px;
-    height: 24px;
-    stroke: #38bdf8;
-    fill: none;
-    filter: drop-shadow(0 0 8px rgba(56,189,248,.8));
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    stroke: #7dd3fc;
 }
 
-.metric-value {
-    color: #ffffff;
-    font-size: clamp(2rem, 4vw, 2.6rem);
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 10px;
-    background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 50%, #38bdf8 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 25px rgba(56,189,248,.4);
-    letter-spacing: -1px;
-}
-
-.metric-label {
-    color: #cbd5e1;
-    font-size: 0.86rem;
-    font-weight: 500;
-    margin: 0;
-}
-
-/* ==========================================================
-   GRID DE TARJETAS PRINCIPALES
-   ========================================================== */
 .grid-container{
     width:min(100% - 40px, 900px);
     margin:0 auto;
@@ -298,13 +253,15 @@ h1{
     gap:20px;
 }
 
+/* --- MEJORA: Glassmorphism en Tarjetas --- */
 .card{
     min-height:160px;
     padding:18px;
-    border:1px solid rgba(56,189,248,.45);
+    border:1px solid rgba(56,189,248,.35);
     border-radius:12px;
-    background:linear-gradient(145deg,rgba(15,28,52,0.95),rgba(7,14,28,0.95));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 12px 35px rgba(0,0,0,.35), 0 0 15px rgba(56,189,248,.1);
+    background: linear-gradient(145deg, rgba(15,28,52,0.7), rgba(7,14,28,0.8));
+    backdrop-filter: blur(12px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 12px 35px rgba(0,0,0,.35);
     text-decoration:none;
     color:inherit;
     display:flex;
@@ -313,6 +270,10 @@ h1{
     position:relative;
     overflow:hidden;
     transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+
+.card.hidden {
+    display: none;
 }
 
 .card::before{
@@ -427,9 +388,6 @@ h1{
     box-shadow:0 0 35px rgba(56,189,248,.8);
 }
 
-/* ==========================================================
-   SECCIÓN DE PREGUNTAS FRECUENTES (FAQ)
-   ========================================================== */
 .faq-section {
     width: min(100% - 40px, 900px);
     margin: 20px auto 10px;
@@ -514,31 +472,77 @@ h1{
     padding: 0 20px 16px 20px;
 }
 
-/* ==========================================================
-   FOOTER PRO
-   ========================================================== */
+.metrics-section {
+    width: min(100% - 40px, 900px);
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.metric-card {
+    background: linear-gradient(145deg, rgba(13, 27, 52, 0.95), rgba(7, 14, 28, 0.98));
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.8);
+}
+
+.metric-icon-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(15, 28, 52, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.metric-icon-box svg {
+    width: 24px;
+    height: 24px;
+    stroke: #38bdf8;
+    fill: none;
+}
+
+.metric-value {
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 50%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.metric-label {
+    color: #cbd5e1;
+    font-size: 0.86rem;
+    font-weight: 500;
+}
+
 footer{
     position:relative;
     z-index:1;
-    background:
-      radial-gradient(circle at 50% 0%, rgba(56,189,248,.3), transparent 50%),
-      radial-gradient(circle at 15% 100%, rgba(14,165,233,.2), transparent 45%),
-      linear-gradient(180deg, rgba(13,27,52,0.95), #030712);
+    background: linear-gradient(180deg, rgba(13,27,52,0.95), #030712);
     border-top:2px solid rgba(56,189,248,.6);
-    box-shadow: 0 -20px 45px rgba(56,189,248,.18);
     padding:65px 20px 30px;
     margin-top:50px;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 20%;
-    right: 20%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-    filter: drop-shadow(0 0 15px #38bdf8);
 }
 
 .footer-content{
@@ -557,7 +561,6 @@ footer::before {
     letter-spacing:1.5px;
     margin-bottom:18px;
     text-transform:uppercase;
-    text-shadow: 0 0 20px rgba(56,189,248,.7);
 }
 
 .footer-col p{
@@ -569,14 +572,12 @@ footer::before {
 
 .footer-col p strong {
     color: #7dd3fc;
-    text-shadow: 0 0 8px rgba(56,189,248,.5);
 }
 
 .footer-pages-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    margin-top: 5px;
 }
 
 .footer-page-card {
@@ -586,39 +587,29 @@ footer::before {
     padding: 9px 13px;
     background: linear-gradient(145deg, rgba(20, 38, 68, 0.9), rgba(10, 20, 38, 0.9));
     border: 1px solid rgba(56, 189, 248, 0.4);
-    border-radius: 9px;
+    border-radius: 999px;
     color: #f8fafc;
     text-decoration: none;
     font-size: 0.8rem;
     font-weight: 600;
     transition: all 0.25s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .footer-page-card svg {
     width: 18px;
     height: 18px;
     stroke: #7dd3fc;
-    filter: drop-shadow(0 0 6px rgba(56,189,248,.8));
     flex-shrink: 0;
-    transition: transform 0.2s ease;
 }
 
 .footer-page-card:hover {
-    background: linear-gradient(145deg, rgba(56, 189, 248, 0.35), rgba(15, 28, 52, 0.95));
+    background: rgba(56, 189, 248, 0.35);
     border-color: #38bdf8;
-    color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(56, 189, 248, 0.45);
-}
-
-.footer-page-card:hover svg {
-    transform: scale(1.15);
+    transform: translateY(-2px);
 }
 
 .footer-socials{
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
     margin-top: 18px;
 }
@@ -635,15 +626,12 @@ footer::before {
     color: #7dd3fc;
     text-decoration: none;
     transition: all 0.25s ease;
-    box-shadow: 0 0 15px rgba(56,189,248,.25);
 }
 
 .social-icon:hover {
     background: #38bdf8;
-    border-color: #38bdf8;
     color: #030712;
-    transform: translateY(-4px);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.9);
+    transform: translateY(-3px);
 }
 
 .social-icon svg {
@@ -652,32 +640,16 @@ footer::before {
     fill: currentColor;
 }
 
-.social-icon[aria-label="OnlyFans"]:hover {
-    background: #00aff0; border-color: #00aff0; color: #fff; box-shadow: 0 0 30px rgba(0, 175, 240, 0.9);
-}
-.social-icon[aria-label="TikTok"]:hover {
-    background: #ff0050; border-color: #ff0050; color: #fff; box-shadow: 0 0 30px rgba(255, 0, 80, 0.9);
-}
-.social-icon[aria-label="YouTube"]:hover {
-    background: #ff0000; border-color: #ff0000; color: #fff; box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
-}
-
 .footer-bottom{
     width:min(100%, 1000px);
     margin:0 auto;
     padding-top:25px;
     border-top:1px solid rgba(56,189,248,.3);
-    display:flex;
-    justify-content:center;
-    align-items:center;
     color:#cbd5e1;
     font-size:.8rem;
     text-align: center;
 }
 
-/* ==========================================================
-   BOTÓN FLOTANTE WHATSAPP
-   ========================================================== */
 .floating-container {
     position: fixed;
     bottom: 25px;
@@ -699,10 +671,7 @@ footer::before {
     color: #f8fafc;
     font-size: 0.85rem;
     font-weight: 600;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56,189,248,.2);
     backdrop-filter: blur(8px);
-    pointer-events: none;
-    white-space: nowrap;
 }
 
 .whatsapp-badge .dot {
@@ -721,7 +690,6 @@ footer::before {
 }
 
 .floating-whatsapp {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -731,28 +699,21 @@ footer::before {
     background: linear-gradient(135deg, #38bdf8, #0284c7);
     color: #030712;
     text-decoration: none;
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5), 0 0 20px rgba(56, 189, 248, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
+    transition: all 0.3s ease;
     border: 2px solid rgba(255, 255, 255, 0.4);
-    flex-shrink: 0;
 }
 
 .floating-whatsapp:hover {
-    transform: scale(1.12) translateY(-3px);
-    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.8), 0 0 30px rgba(56, 189, 248, 0.7);
-    background: linear-gradient(135deg, #7dd3fc, #0ea5e9);
+    transform: scale(1.1) translateY(-3px);
 }
 
 .floating-whatsapp svg {
     width: 32px;
     height: 32px;
     fill: currentColor;
-    filter: drop-shadow(0 0 4px rgba(3, 7, 18, 0.3));
 }
 
-/* ==========================================================
-   RESPONSIVE DESIGN
-   ========================================================== */
 @media(max-width:760px){
     .metrics-section,
     .grid-container{
@@ -775,27 +736,10 @@ footer::before {
         grid-template-columns:1fr;
         width:calc(100% - 28px);
     }
-    .card{min-height:150px}
-    .footer-content{
-        grid-template-columns: 1fr;
-        gap:24px;
-    }
-    .whatsapp-badge {
-        display: none;
-    }
-    .floating-container {
-        bottom: 20px;
-        right: 20px;
-    }
-    .live-counter-bar {
-        flex-direction: column;
-        gap: 6px;
-        border-radius: 12px;
-        padding: 8px 14px;
-    }
-    .counter-divider {
-        display: none;
-    }
+    .footer-content{grid-template-columns: 1fr;}
+    .whatsapp-badge {display: none;}
+    .live-counter-bar {flex-direction: column; gap: 6px;}
+    .counter-divider {display: none;}
 }
 </style>
 </head>
@@ -830,21 +774,21 @@ footer::before {
                 <span>Descargas: <strong id="download-counter">--</strong></span>
             </div>
         </div>
+
+        <!-- BARRA DE BÚSQUEDA INTERACTIVA -->
+        <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="cardSearch" class="search-input" placeholder="Buscar catálogo (ej. Apps, Wallpapers)...">
+        </div>
     </header>
 
-    <!-- TARJETAS PRINCIPALES EN ORDEN ALFABÉTICO (A-Z) -->
-    <main class="grid-container">
-
-        <!-- 1. APPS -->
-        <a href="https://newcosmo-peru.github.io/APPS/" target="_blank" rel="noopener" class="card">
+    <main class="grid-container" id="cardsGrid">
+        <a href="https://newcosmo-peru.github.io/APPS/" target="_blank" rel="noopener" class="card" data-title="apps software utilitarios">
             <span class="card-badge">Software</span>
             <div class="card-top">
                 <div class="icon-box">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="4" y="4" width="6" height="6" rx="1.5"/>
-                        <rect x="14" y="4" width="6" height="6" rx="1.5"/>
-                        <rect x="4" y="14" width="6" height="6" rx="1.5"/>
-                        <rect x="14" y="14" width="6" height="6" rx="1.5"/>
+                        <rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/>
                     </svg>
                 </div>
                 <div>
@@ -856,14 +800,12 @@ footer::before {
             <span class="card-btn">Colecciones</span>
         </a>
 
-        <!-- 2. MANUALES -->
-        <a href="https://newcosmo-peru.github.io/MANUALES/" target="_blank" rel="noopener" class="card">
+        <a href="https://newcosmo-peru.github.io/MANUALES/" target="_blank" rel="noopener" class="card" data-title="manuales guias oficiales">
             <span class="card-badge">Oficial</span>
             <div class="card-top">
                 <div class="icon-box">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/>
-                        <path d="M8 7h8M8 11h8M8 15h5"/>
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/><path d="M8 7h8M8 11h8M8 15h5"/>
                     </svg>
                 </div>
                 <div>
@@ -875,16 +817,12 @@ footer::before {
             <span class="card-btn">Colecciones</span>
         </a>
 
-        <!-- 3. SOLUCIONES -->
-        <a href="https://newcosmo-peru.github.io/SOLUCIONES/" target="_blank" rel="noopener" class="card">
+        <a href="https://newcosmo-peru.github.io/SOLUCIONES/" target="_blank" rel="noopener" class="card" data-title="soluciones tips soporte incidencias">
             <span class="card-badge">Tips</span>
             <div class="card-top">
                 <div class="icon-box">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m14.7 6.3 3-3a4 4 0 0 1 0 5.7l-2 2"/>
-                        <path d="m9.3 17.7-3 3a4 4 0 0 1-5.7-5.7l2-2"/>
-                        <path d="m8 16 8-8"/>
-                        <path d="m12 4 2 2M18 10l2 2"/>
+                        <path d="m14.7 6.3 3-3a4 4 0 0 1 0 5.7l-2 2"/><path d="m9.3 17.7-3 3a4 4 0 0 1-5.7-5.7l2-2"/><path d="m8 16 8-8"/><path d="m12 4 2 2M18 10l2 2"/>
                     </svg>
                 </div>
                 <div>
@@ -896,16 +834,12 @@ footer::before {
             <span class="card-btn">Colecciones</span>
         </a>
 
-        <!-- 4. STORE -->
-        <a href="https://newcosmo-peru.github.io/STORE/" target="_blank" rel="noopener" class="card">
+        <a href="https://newcosmo-peru.github.io/STORE/" target="_blank" rel="noopener" class="card" data-title="store tienda productos digitales">
             <span class="card-badge">Popular</span>
             <div class="card-top">
                 <div class="icon-box">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 8H6"/>
-                        <circle cx="10" cy="20" r="1.2"/>
-                        <circle cx="18" cy="20" r="1.2"/>
-                        <path d="M8 8h11"/>
+                        <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/><path d="M8 8h11"/>
                     </svg>
                 </div>
                 <div>
@@ -917,8 +851,7 @@ footer::before {
             <span class="card-btn">Colecciones</span>
         </a>
 
-        <!-- 5. TONOS -->
-        <a href="https://newcosmo-peru.github.io/TONOS/" target="_blank" rel="noopener" class="card">
+        <a href="https://newcosmo-peru.github.io/TONOS/" target="_blank" rel="noopener" class="card" data-title="tonos audios llamadas sonidos">
             <span class="card-badge">Audio</span>
             <div class="card-top">
                 <div class="icon-box">
@@ -935,15 +868,12 @@ footer::before {
             <span class="card-btn">Colecciones</span>
         </a>
 
-        <!-- 6. WALLPAPERS -->
-        <a href="https://newcosmo-peru.github.io/WALLPAPERS/" target="_blank" rel="noopener" class="card">
+        <a href="https://newcosmo-peru.github.io/WALLPAPERS/" target="_blank" rel="noopener" class="card" data-title="wallpapers fondos galeria alta resolucion hd 4k">
             <span class="card-badge">4K / HD</span>
             <div class="card-top">
                 <div class="icon-box">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <path d="m21 15-4.2-4.2a1.8 1.8 0 0 0-2.6 0L6 19"/>
+                        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-4.2-4.2a1.8 1.8 0 0 0-2.6 0L6 19"/>
                     </svg>
                 </div>
                 <div>
@@ -954,7 +884,6 @@ footer::before {
             </div>
             <span class="card-btn">Colecciones</span>
         </a>
-
     </main>
 
     <section class="faq-section">
@@ -992,13 +921,11 @@ footer::before {
         </div>
     </section>
 
-    <!-- SECCIÓN DE TARJETAS MÉTRICAS -->
     <section class="metrics-section">
         <div class="metric-card">
             <div class="metric-icon-box">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/>
-                    <path d="M8 7h8M8 11h8"/>
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/><path d="M8 7h8M8 11h8"/>
                 </svg>
             </div>
             <div class="metric-value">+500</div>
@@ -1008,10 +935,7 @@ footer::before {
         <div class="metric-card">
             <div class="metric-icon-box">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0z"/>
-                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3 z"/>
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0z"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3 z"/>
                 </svg>
             </div>
             <div class="metric-value">+100</div>
@@ -1021,8 +945,7 @@ footer::before {
         <div class="metric-card">
             <div class="metric-icon-box">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
             </div>
             <div class="metric-value">99%</div>
@@ -1054,30 +977,12 @@ footer::before {
             <div class="footer-col">
                 <h4>Explorar Páginas</h4>
                 <div class="footer-pages-grid">
-                    <a href="https://newcosmo-peru.github.io/APPS/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg>
-                        Apps
-                    </a>
-                    <a href="https://newcosmo-peru.github.io/MANUALES/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/><path d="M8 7h8M8 11h8"/></svg>
-                        Manuales
-                    </a>
-                    <a href="https://newcosmo-peru.github.io/SOLUCIONES/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.7 6.3 3-3a4 4 0 0 1 0 5.7l-2 2"/><path d="m8 16 8-8"/></svg>
-                        Soluciones
-                    </a>
-                    <a href="https://newcosmo-peru.github.io/STORE/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
-                        Store
-                    </a>
-                    <a href="https://newcosmo-peru.github.io/TONOS/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v4M8 9v10M12 5v14M16 8v11M20 11v5"/></svg>
-                        Tonos
-                    </a>
-                    <a href="https://newcosmo-peru.github.io/WALLPAPERS/" target="_blank" rel="noopener" class="footer-page-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-4.2-4.2a1.8 1.8 0 0 0-2.6 0L6 19"/></svg>
-                        Wallpapers
-                    </a>
+                    <a href="https://newcosmo-peru.github.io/APPS/" target="_blank" rel="noopener" class="footer-page-card">Apps</a>
+                    <a href="https://newcosmo-peru.github.io/MANUALES/" target="_blank" rel="noopener" class="footer-page-card">Manuales</a>
+                    <a href="https://newcosmo-peru.github.io/SOLUCIONES/" target="_blank" rel="noopener" class="footer-page-card">Soluciones</a>
+                    <a href="https://newcosmo-peru.github.io/STORE/" target="_blank" rel="noopener" class="footer-page-card">Store</a>
+                    <a href="https://newcosmo-peru.github.io/TONOS/" target="_blank" rel="noopener" class="footer-page-card">Tonos</a>
+                    <a href="https://newcosmo-peru.github.io/WALLPAPERS/" target="_blank" rel="noopener" class="footer-page-card">Wallpapers</a>
                 </div>
             </div>
 
@@ -1113,6 +1018,22 @@ footer::before {
                 splash.classList.add('fade-out');
             }, 600);
             initLiveCounters();
+        });
+
+        /* --- LÓGICA DE BÚSQUEDA EN TIEMPO REAL --- */
+        const searchInput = document.getElementById('cardSearch');
+        const cards = document.querySelectorAll('.card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            cards.forEach(card => {
+                const keywords = card.getAttribute('data-title');
+                if (keywords.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
         });
 
         async function initLiveCounters() {
