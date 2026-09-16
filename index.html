@@ -186,10 +186,17 @@ h1 {
 .counter-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     color: #94a3b8;
     font-size: 0.85rem;
     font-weight: 500;
+}
+
+.counter-svg {
+    height: 22px;
+    width: auto;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.4));
 }
 
 .live-dot {
@@ -738,12 +745,12 @@ footer{
         </div>
         <h1>NEWCOSMO</h1>
         
-        <!-- CONTADOR DE VISITAS WEBSITE OUT -->
+        <!-- CONTADOR DE VISITAS EN SVG DINÁMICO -->
         <div class="live-counter-bar">
             <div class="counter-item">
                 <span class="live-dot"></span>
                 <span>Visitas:</span>
-                <script type="text/javascript" src="https://contador.websiteout.com/js/13/8/0/0"></script>
+                <img src="https://contador-de-visitas.com/c/newcosmo-peru.github.io-portal.svg?style=neon&amp;digits=8&amp;theme=dark&amp;start=1000&amp;bg=09090b&amp;color=22a6b3" alt="contador de visitas" class="counter-svg">
             </div>
         </div>
     </header>
@@ -1042,7 +1049,7 @@ footer{
         </a>
     </div>
 
-    <!-- SCRIPT DE NAVEGACIÓN Y FAQ (SIN SCRIPT OBSOLETO DE API) -->
+    <!-- SCRIPT JS PRINCIPAL -->
     <script>
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
