@@ -206,12 +206,6 @@ h1 {
     50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-.counter-item strong {
-    color: #ffffff;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-}
-
 /* ==========================================================
    TARJETAS DE MÉTRICAS
    ========================================================== */
@@ -744,11 +738,12 @@ footer{
         </div>
         <h1>NEWCOSMO</h1>
         
-        <!-- SOLO CONTADOR DE VISITAS EN VIVO -->
+        <!-- CONTADOR DE VISITAS WEBSITE OUT -->
         <div class="live-counter-bar">
             <div class="counter-item">
                 <span class="live-dot"></span>
-                <span>Visitas: <strong id="visit-counter">--</strong></span>
+                <span>Visitas:</span>
+                <script type="text/javascript" src="https://contador.websiteout.com/js/13/8/0/0"></script>
             </div>
         </div>
     </header>
@@ -1047,87 +1042,14 @@ footer{
         </a>
     </div>
 
-<!-- SCRIPT JS MEJORADO Y RESISTENTE A ERRORES -->
+    <!-- SCRIPT DE NAVEGACIÓN Y FAQ (SIN SCRIPT OBSOLETO DE API) -->
     <script>
-        // Usamos la API pública de CountAPI directa y estable
-        const API_URL_UP = "https://api.countapi.xyz/hit/newcosmo-peru-portal/visitas_oficiales";
-        const API_URL_GET = "https://api.countapi.xyz/get/newcosmo-peru-portal/visitas_oficiales";
-        const REFRESH_INTERVAL = 5000;
-
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
             setTimeout(() => {
                 if(splash) splash.classList.add('fade-out');
             }, 500);
-
-            registerVisitAndStartLiveSync();
         });
-
-        async function registerVisitAndStartLiveSync() {
-            const visitEl = document.getElementById('visit-counter');
-
-            // 1. Sumar visita inicial
-            try {
-                const res = await fetch(API_URL_UP);
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data && data.value !== undefined) {
-                        updateCounterWithEffect(visitEl, data.value);
-                    } else {
-                        throw new Error("Formato inválido");
-                    }
-                } else {
-                    throw new Error("Error en servidor");
-                }
-            } catch (error) {
-                console.warn("No se pudo sumar la visita, intentando solo lectura...", error);
-                await syncLiveCounters();
-            }
-
-            // 2. Sincronización continua en segundo plano
-            setInterval(async () => {
-                await syncLiveCounters();
-            }, REFRESH_INTERVAL);
-        }
-
-        async function syncLiveCounters() {
-            const visitEl = document.getElementById('visit-counter');
-            
-            try {
-                const res = await fetch(API_URL_GET);
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data && data.value !== undefined) {
-                        updateCounterWithEffect(visitEl, data.value);
-                    }
-                } else if (visitEl.textContent === '--') {
-                    // Muestra un valor por defecto si falla la API en el primer inicio
-                    visitEl.textContent = '1,240';
-                }
-            } catch (e) {
-                if (visitEl.textContent === '--') {
-                    visitEl.textContent = '1,240';
-                }
-            }
-        }
-
-        function updateCounterWithEffect(element, newValue) {
-            if (!element) return;
-            
-            const formattedValue = Number(newValue).toLocaleString();
-            if (element.textContent === formattedValue) return;
-
-            element.textContent = formattedValue;
-            
-            element.style.transition = "color 0.3s ease, text-shadow 0.3s ease";
-            element.style.color = "#00e5ff";
-            element.style.textShadow = "0 0 12px #00e5ff";
-            
-            setTimeout(() => {
-                element.style.color = "#ffffff";
-                element.style.textShadow = "none";
-            }, 800);
-        }
 
         // ACCORDEON FAQ
         document.querySelectorAll('.faq-question').forEach(button => {
