@@ -175,36 +175,37 @@ h1 {
 .live-counter-bar {
     display: inline-flex;
     align-items: center;
-    padding: 8px 22px;
-    background: rgba(15, 23, 42, 0.65);
-    border: 1px solid rgba(0, 229, 255, 0.25);
+    padding: 6px 18px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(28, 196, 253, 0.35);
     border-radius: 999px;
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(28, 196, 253, 0.15);
 }
 
 .counter-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: #94a3b8;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-.counter-svg {
-    height: 22px;
+.counter-svg-score {
+    height: 26px;
     width: auto;
     vertical-align: middle;
-    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.4));
+    border-radius: 4px;
+    filter: drop-shadow(0 0 8px rgba(28, 196, 253, 0.5));
 }
 
 .live-dot {
     width: 8px;
     height: 8px;
-    background-color: #00e5ff;
+    background-color: #1cc4fd;
     border-radius: 50%;
-    box-shadow: 0 0 8px #00e5ff;
+    box-shadow: 0 0 8px #1cc4fd;
     animation: pulseDot 1.8s infinite;
 }
 
@@ -745,12 +746,12 @@ footer{
         </div>
         <h1>NEWCOSMO</h1>
         
-        <!-- CONTADOR DE VISITAS EN SVG DINÁMICO -->
+        <!-- CONTADOR DE VISITAS ESTILO SCORE -->
         <div class="live-counter-bar">
             <div class="counter-item">
                 <span class="live-dot"></span>
                 <span>Visitas:</span>
-                <img src="https://contador-de-visitas.com/c/newcosmo-peru.github.io-portal.svg?style=neon&amp;digits=8&amp;theme=dark&amp;start=1000&amp;bg=09090b&amp;color=22a6b3" alt="contador de visitas" class="counter-svg">
+                <img src="https://contador-de-visitas.com/c/newcosmo-peru.github.io-portal.svg?style=score&amp;digits=8&amp;theme=dark&amp;start=1000&amp;bg=09090b&amp;color=1cc4fd" alt="contador de visitas" class="counter-svg-score">
             </div>
         </div>
     </header>
