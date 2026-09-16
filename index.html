@@ -1049,7 +1049,8 @@ footer{
 
     <!-- SCRIPT JS EXCLUSIVO PARA VISITAS EN VIVO -->
     <script>
-        const API_NAMESPACE = "newcosmo-peru";
+        const API_NAMESPACE = "newcosmo-peru-portal";
+        const API_KEY = "visitas_oficiales";
         const REFRESH_INTERVAL = 5000; // Sincroniza cada 5 segundos
 
         window.addEventListener('load', () => {
@@ -1066,13 +1067,19 @@ footer{
 
             // REGISTRO INICIAL (+1 Visita)
             try {
-                const visitResponse = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_visits/up`);
-                const visitData = await visitResponse.json();
-                if (visitData && visitData.count) {
-                    updateCounterWithEffect(visitEl, visitData.count);
+                const response = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/${API_KEY}/up`);
+                
+                if (!response.ok) {
+                    throw new Error("Respuesta no OK de la API");
+                }
+                
+                const data = await response.json();
+                if (data && typeof data.count !== 'undefined') {
+                    updateCounterWithEffect(visitEl, data.count);
                 }
             } catch (error) {
-                if(visitEl) visitEl.textContent = "1,420";
+                console.warn("Error incrementando contador, intentando consulta directa...", error);
+                await syncLiveCounters();
             }
 
             // BUCLE EN VIVO (Revisa actualizaciones sin sumar)
@@ -1085,24 +1092,25 @@ footer{
             const visitEl = document.getElementById('visit-counter');
             
             try {
-                const res = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/portal_visits`);
-                const data = await res.json();
-                
-                if (data && data.count) {
-                    const currentDisplayed = parseInt(visitEl.textContent.replace(/,/g, '')) || 0;
-                    if (data.count !== currentDisplayed) {
+                const res = await fetch(`https://api.counterapi.dev/v1/${API_NAMESPACE}/${API_KEY}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && typeof data.count !== 'undefined') {
                         updateCounterWithEffect(visitEl, data.count);
                     }
                 }
             } catch (e) {
-                // Mantiene el valor en pantalla en caso de error silencioso
+                console.error("Error al sincronizar visitas:", e);
             }
         }
 
         function updateCounterWithEffect(element, newValue) {
             if (!element) return;
             
-            element.textContent = newValue.toLocaleString();
+            const formattedValue = Number(newValue).toLocaleString();
+            if (element.textContent === formattedValue) return; // Evita animar si el valor no ha cambiado
+
+            element.textContent = formattedValue;
             
             element.style.transition = "color 0.3s ease, text-shadow 0.3s ease";
             element.style.color = "#00e5ff";
